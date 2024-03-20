@@ -35,16 +35,11 @@ function Home() {
   );
 
   useEffect(() => {
-    fetch('https://moviz-backend-umber.vercel.app/movies')
+    fetch('http://localhost:3000/movies')
     .then(res => res.json())
     .then(data => {
 
       setMoviesData(data.movies)
-
-      // for (let movie of data.movies) {
-      //   movie.overview.length > 250 ? movie.overview.substring(0, 250) + '...' : movie.overview
-      //   setMoviesData( [...moviesData, movie] )
-      // }
     
     })
     }, [])
@@ -71,7 +66,7 @@ function Home() {
 
   const movies = moviesData.map((data, i) => {
     const isLiked = likedMovies.some(movie => movie === data.title);
-    return <Movie key={i} updateLikedMovies={updateLikedMovies} isLiked={isLiked} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount} />;
+    return <Movie key={i} updateLikedMovies={updateLikedMovies} isLiked={isLiked} title={data.title} overview={data.overview} poster_path={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount} />;
   });
 
   return (
